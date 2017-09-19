@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+body, html {
+  overflow: hidden!important;
+
+}
+
+@include adaptive(max_767) {
+  .wow {
+    animation-name: none;
+    visibility: visible;
+  }
+
+  body, html {
+    overflow: hidden!important;
+  }
+}

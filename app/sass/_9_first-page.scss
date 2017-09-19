@@ -1,0 +1,103 @@
+@charset "utf-8";
+
+.first-page {
+  position: relative;
+  background-color: transparent;
+
+  &__social-icons {
+    margin: 0 auto;
+
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 50px;
+  }
+}
+
+.social-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 244px;
+  height: 48px;
+}
+
+.social-icon {
+  width: 48px;
+  height: 48px;
+
+  background-image: url("../img/social-icons-sprite.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:nth-child(1) {
+    background-position: top left;
+
+    &:hover {
+      background-position: bottom left;
+    }
+  }
+
+  &:nth-child(2) {
+    background-position: top center;
+
+    &:hover {
+      background-position: bottom center;
+    }
+  }
+
+  &:nth-child(3) {
+    background-position: top right;
+
+    &:hover {
+      background-position: bottom right;
+    }
+  }
+
+  a {
+    display: block;
+    height: 100%;
+  }
+}
+
+//=================================//
+// adaptive //
+//=================================//
+
+@include adaptive(max_991) {
+  .first-page {
+
+    &__social-icons {
+      bottom: 30px;
+    }
+  }
+}
+
+@include adaptive(max_767) {
+  .first-page {
+
+    &__social-icons {
+      bottom: 25px;
+      width: 200px;
+    }
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    background-size: 300% 200%;
+  }
+}
+
+@include adaptive(max_480) {
+  .first-page {
+
+    &__social-icons {
+      bottom: 15px;
+    }
+  }
+}
+

@@ -1,0 +1,283 @@
+@charset "utf-8";
+$paddingLinkNavItem: 20px;
+
+.backgroundTransparent {
+  background: transparent!important;
+}
+
+.backgroundHeader {
+  background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important; /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(41, 41, 41, 1)), color-stop(100%, rgba(255, 255, 255, 0)))!important; /* safari4+,chrome */
+  background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important; /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important; /* opera 11.10+ */
+  background: -ms-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important; /* ie10+ */
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important; /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#ffffff', GradientType=0)!important; /* ie6-9 */
+}
+
+.header {
+  z-index: 2;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 40px 50-$paddingLinkNavItem  40px 50px;
+
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  //@extend .backgroundHeader;
+  background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(41, 41, 41, 1)), color-stop(100%, rgba(255, 255, 255, 0))); /* safari4+,chrome */
+  background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%); /* opera 11.10+ */
+  background: -ms-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%); /* ie10+ */
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#ffffff', GradientType=0); /* ie6-9 */
+}
+
+.logo {
+  width: 139px;
+  height: 21px;
+  background-image: url("../img/logo-header.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.navigation__hamburger {
+  display: none;
+
+  position: absolute;
+  top: 1px;
+  right: 12px;
+
+  width: 38px;
+  height: 38px;
+  background-color: transparent;
+
+  cursor: pointer;
+
+  i, i::before, i::after {
+    content: '';
+    width: 25px;
+    height: 2px;
+    left: 0;
+    background: #55acee;
+    border-radius: 2px;
+    transition: transform .2s ease;
+  }
+
+  i {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 5px;
+  }
+
+  i:before {
+    position: absolute;
+    top: -8px;
+  }
+
+  i:after {
+    position: absolute;
+    top: 8px;
+  }
+
+  &.active {
+    border-radius: 50%;
+    border-color: #55acee;
+
+    i {
+      background: transparent;
+    }
+
+    i:before {
+      top: 0;
+      transform: rotate(45deg);
+      background-color: #55acee;
+    }
+
+    i:after {
+      top: 0;
+      transform: rotate(-45deg);
+      background-color: #55acee;
+    }
+  }
+}
+
+.navigation__list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  max-width: 1250px;
+}
+
+.navigation__item {
+  a {
+    padding: 5px $paddingLinkNavItem;
+
+    display: block;
+
+    font-size: 14px;
+    font-family: "Circe Bold";
+    color: #FFF;
+    text-transform: uppercase;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+//=================================//
+// adaptive //
+//=================================//
+
+@include adaptive(min_1200__max_1500) {
+  .header {
+    padding: 35px 45-$paddingLinkNavItem 35px 45px;
+  }
+
+  .navigation__list {
+    max-width: 960px;
+  }
+}
+
+
+@include adaptive(max_1199) {
+  .header {
+    padding: 30px 30-$paddingLinkNavItem 30px 30px;
+  }
+
+  .navigation__list {
+    max-width: 790px;
+  }
+}
+
+@include adaptive(max_991) {
+  .header {
+    padding: 25px 25-$paddingLinkNavItem 25px 25px;
+  }
+
+  .navigation__list {
+    max-width: 575px;
+  }
+}
+
+@include adaptive(max_767) {
+  .header {
+    padding: 10px 0 0;
+  }
+
+  .backgroundHeader-fadeIn {
+    background-color: #252525!important;
+  }
+
+  .logo {
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .navigation__hamburger {
+    display: block;
+  }
+
+  .navigation__list {
+    display: none;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    max-width: 100%;
+    height: calc(100vh - 43px);
+  }
+
+  .header__navigation {
+
+    width: 100%;
+  }
+
+  .navigation__item {
+    width: 100%;
+    border-top: 1px solid #303030;
+    border-bottom: 1px solid #202020;
+
+    &:first-child {
+      border-top: 1px solid #202020;
+      position: relative;
+
+      ::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: #303030;
+      }
+    }
+
+    &:last-child {
+      border-bottom: 1px solid #303030;
+      position: relative;
+
+      ::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: #202020;
+      }
+    }
+
+    a {
+      padding: 12px 0 7px;
+      font-size: 22px;
+      text-align: center;
+
+      box-sizing: border-box;
+    }
+  }
+}
+
+@include adaptive(max_480) {
+
+  .navigation__item {
+    a {
+      font-size: 20px;
+    }
+  }
+}
+
+//HEIGHT
+@include adaptive(maxHeight580) {
+  .fourth-page {
+    &__first-half {
+      margin-bottom: 400px;
+      height: 145px;
+    }
+
+    &__second-half {
+      top: 150px;
+      height: 400px;
+    }
+  }
+}
+
+

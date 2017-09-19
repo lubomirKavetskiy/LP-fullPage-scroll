@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+.third-page {
+  background-color: transparent;
+}
+
+.third-page__btn {
+  margin-top: 40px;
+}
+
+//=================================//
+// adaptive //
+//=================================//
+
+@include adaptive(max_1199) {
+  .third-page__btn {
+    margin-top: 25px;
+  }
+}

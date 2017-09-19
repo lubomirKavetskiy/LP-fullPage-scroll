@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+//=================================//
+// global style-files //
+//=================================//
+@import "1_normalize";
+@import "2_media-breakpoints";
+@import "3_fonts";
+@import "4_wrap";
+@import "5_btn";
+@import "6_animate";
+
+
+//=================================//
+// blocks style-files //
+//=================================//
+@import "7_preloader";
+@import "8_header";
+@import "9_first-page";
+@import "10_second-page";
+@import "11_third-page";
+@import "12_fourth-page";
+
+
+@import "end";
+
+
+
+
+
+
