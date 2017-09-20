@@ -1,18 +1,20 @@
 @charset "utf-8";
 $paddingLinkNavItem: 20px;
 
+.logoBgPosTop {
+  background-position: top center;
+}
+
+.logoBgPosBot {
+  background-position: bottom center!important;
+}
+
 .backgroundTransparent {
   background: transparent!important;
 }
 
 .backgroundHeader {
-  background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important; /* ff3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(41, 41, 41, 1)), color-stop(100%, rgba(255, 255, 255, 0)))!important; /* safari4+,chrome */
-  background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important; /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important; /* opera 11.10+ */
-  background: -ms-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important; /* ie10+ */
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important; /* w3c */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#ffffff', GradientType=0)!important; /* ie6-9 */
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%)!important;
 }
 
 .header {
@@ -28,21 +30,14 @@ $paddingLinkNavItem: 20px;
   justify-content: space-between;
   align-items: center;
 
-  padding: 40px 50-$paddingLinkNavItem  40px 50px;
+  padding: 40px 50-$paddingLinkNavItem 40px 50px;
 
   width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 
-  //@extend .backgroundHeader;
-  background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%); /* ff3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(41, 41, 41, 1)), color-stop(100%, rgba(255, 255, 255, 0))); /* safari4+,chrome */
-  background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%); /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%); /* opera 11.10+ */
-  background: -ms-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%); /* ie10+ */
   background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(41, 41, 41, 1) 100%); /* w3c */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#ffffff', GradientType=0); /* ie6-9 */
 }
 
 .logo {

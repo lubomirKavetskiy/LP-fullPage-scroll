@@ -22,9 +22,11 @@ function wowStart() {
 
 // ================================ //
 function handlePreloader(timeIterPreloader) {
-    if ($('.preloader').length) {
+   var $preloader = $('.preloader');
+
+    if ($preloader.length) {
         $('.preloader__logo-box').delay(timeIterPreloader-400).fadeOut(600);
-        $('.preloader').delay(timeIterPreloader).fadeOut(700);
+        $preloader.delay(timeIterPreloader).fadeOut(700);
 
         // WOW.js (Animate on scroll library) https://github.com/matthieua/WOW
         setTimeout(function() {wowStart()}, timeIterPreloader);
@@ -37,7 +39,8 @@ function handlePreloader(timeIterPreloader) {
 
 // ====== fixed navigation ======= //
 function fixedNavigation(valueScroll) {
-    if($(".header").length) {
+    var $header = $('.header');
+    if($header.length) {
 
         var tempScrollTop,
             currentScrollTop = 0;
@@ -47,12 +50,12 @@ function fixedNavigation(valueScroll) {
             currentScrollTop = $(this).scrollTop();
 
             if ((tempScrollTop < currentScrollTop) && (currentScrollTop > valueScroll) && ($(window).width() < 768)) {
-                $(".header").slideUp(300, function() {
-                    $(".header").stop(true, true);
+                $header.slideUp(300, function() {
+                    $header.stop(true, true);
                 });
             }
             else if (tempScrollTop > currentScrollTop) {
-                $(".header").slideDown(300);
+                $header.slideDown(300);
             }
             tempScrollTop = currentScrollTop;
         });
@@ -68,7 +71,7 @@ function toggleNavigation() {
         $this.toggleClass('active');
         $('.navigation__list').toggleClass('fadeIn-flex');
         $('.header').toggleClass('backgroundHeader-fadeIn');
-        $('.navigation__item a').css({'color': '#FFF'});
+        $('.navigation__item a').toggleClass('colorNavItemCur');
 
         $(".navigation__hamburger").hasClass("active") ?
             $('body, html').each(function () {
@@ -116,7 +119,7 @@ function fullpageStart() {
 
         //Scrolling
         css3: true,
-        scrollingSpeed: 300,
+        scrollingSpeed: 600,
         easingcss3: 'ease-in',
         sectionsColor: ['transparent', '#212121', 'transparent', '#FFF'],
         responsiveWidth: 768,
@@ -141,12 +144,12 @@ function fullpageStart() {
 
                 else if (nextIndex == 4) {
                     $('.header').addClass('backgroundTransparent');
-                    $('.logo').css({"background-position": "bottom center"});
+                    $('.logo').toggleClass('logoBgPosBot');
 
                     if($('.fourth-page__second-half').hasClass('slide-left-from-side')) {
-                        $('.navigation__item a').css({'color': '#FFF'});
+                        $('.navigation__item a').css({'color':'#FFF'});
                     } else {
-                        $('.navigation__item a').css({'color': '#666'});
+                        $('.navigation__item a').css({'color':'#666'});
                     }
 
                     $('.fourth-page__first-half').addClass('fadeIn-flex');
@@ -155,7 +158,7 @@ function fullpageStart() {
                     }, 1000);
 
                     $('.fourth-page__second-half').addClass('slide-left-from-side', function() {
-                        setTimeout(function() {$('.navigation__item a').css({'color': '#FFF'});}, 2000);
+                        setTimeout(function() {$('.navigation__item a').css({'color':'#FFF'});}, 2000);
                     });
                     setTimeout(function() {
                         $('.contact-form').addClass('fadeIn-flex');
@@ -168,8 +171,9 @@ function fullpageStart() {
 
             if (index == 1 || index == 2 || index == 3) {
                 $('.header').removeClass('backgroundTransparent');
-                $('.logo').css({"background-position": "top center"});
-                $('.navigation__item a').css({'color': '#FFF'});
+                $('.logo').removeClass('logoBgPosBot');
+                $('.logo').removeClass('logoBgPosTop');
+                $('.navigation__item a').css({'color':'#FFF'});
             }
         },
 
@@ -194,7 +198,6 @@ function fullpageStart() {
 
 // === DOCUMENT READY === //
 $(document).ready(function () {
-    section.css('height', windowsHeight + 'px')
     $(".preloader__logo-box>img").fadeIn(2000);
 
     animatingReloader();
@@ -209,116 +212,6 @@ $(window).on("load", function () {
     handlePreloader(5500);
 });
 // ================================ //
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function fullpageStart() {
-//
-//     $('#fullpage').fullpage({
-//         //Navigation
-//         menu: '#menu',
-//         anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
-//         scrollOverflow: true,
-//
-//         //Scrolling
-//         css3: true,
-//         scrollingSpeed: 200,
-//         easingcss3: 'ease-in',
-//         sectionsColor: ['transparent', '#212121', 'transparent', '#FFF'],
-//
-//         onLeave: function (index, nextIndex, direction) {
-//
-//                 var leavingSection = $(this);
-//                 if (nextIndex == 2) {
-//                     $.fn.fullpage.reBuild();
-//                     setTimeout(function () {
-//                         $('.second-page__img').addClass('fadeIn');
-//                         $('.second-page__text').delay(800).slideDown(600, function () {
-//                             $('.second-page__text').css({'opacity': '1'});
-//                         });
-//                     }, 1000);
-//                 } else if (nextIndex == 3) {
-//                     setTimeout(function () {
-//                         $('.third-page .section__container').addClass('fadeInDown');
-//                     }, 1000);
-//                 } else if (nextIndex == 4) {
-//                     if ($('.contact-form').hasClass('fadeIn')) {
-//                         $('.logo').css({"background-position": "bottom center"});
-//                         $('.navigation__item a').css({'color': '#FFF'});
-//                         $('.header').toggleClass('backgroundNone').toggleClass('backgroundHeader');
-//                     } else {
-//                         $('.logo').css({"background-position": "bottom center"});
-//                         $('.navigation__item a').css({'color': '#666'});
-//                         $('.header').addClass('backgroundNone');
-//                         setTimeout(function () {
-//                             $('.fourth-page__container').addClass('fadeIn');
-//                             setTimeout(function () {
-//                                 if (windowWidth > 767) {
-//                                     $('.fourth-page__first-half').addClass('halfFirstWidth');
-//                                     $('.fourth-page__second-half').addClass('halfSecondWidth');
-//                                     $('.navigation__item a').css({'color': '#FFF'});
-//                                     setTimeout(function () {
-//                                         $('.contact-form').addClass('fadeIn');
-//                                     }, 1200);
-//                                 } else {
-//                                     $('.fourth-page__first-half').addClass('halfFirstHeight');
-//                                     $('.fourth-page__second-half').addClass('halfSecondHeight');
-//                                     $('.navigation__item a').css({'color': '#666'});
-//                                     setTimeout(function () {
-//                                         $('.contact-form').addClass('fadeIn');
-//                                     }, 1200);
-//                                 }
-//                             }, 1000);
-//                         }, 1000);
-//                     }
-//
-//                 }
-//                 if (index == 4 && direction == 'up') {
-//                     $('.logo').css({"background-position": "top center"});
-//                     $('.navigation__item a').css({'color': '#FFF'});
-//                     $('.header').removeClass('backgroundNone').addClass('backgroundHeader');
-//                 } else if (index == 2) {
-//                     // $('.second-page').removeClass('moreOpacity');
-//                 }
-//             // }
-//         }
-//
-//     });
-// }
-
-// $(window).resize(function() {
-//     var windowWidth = $(window).width();
-//     if(windowWidth < 767) {
-//         $('.navigation__item a').css({'color': '#666'});
-//     }
-//     if($('.fourth-page__first-half').hasClass('halfFirstHeight') && windowWidth > 767){
-//         $('.fourth-page__first-half, .fourth-page__second-half').toggleClass('height100');
-//         // $('.fourth-page__container fadeIn').css('min-height', '100vh');
-//
-//     }else if($('.fourth-page__first-half').hasClass('halfFirstWidth') && windowWidth < 767){
-//         $('.fourth-page__first-half, .fourth-page__second-half').addClass('width100');
-//         $('.fourth-page__first-half').addClass('height30');
-//         $('.fourth-page__second-half').addClass('height70');
-//     }
-// });
-
-
 
 
 
