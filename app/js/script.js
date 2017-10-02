@@ -27,6 +27,8 @@ function handlePreloader(timeIterPreloader) {
     if ($preloader.length) {
         $('.preloader__logo-box').delay(timeIterPreloader-400).fadeOut(600);
         $preloader.delay(timeIterPreloader).fadeOut(700);
+        setTimeout(function() {$('body').toggleClass('body_hidden body_visible')}, timeIterPreloader);
+        setTimeout(function() {$('body').toggleClass('body_visible body_hidden')}, timeIterPreloader);
 
         // WOW.js (Animate on scroll library) https://github.com/matthieua/WOW
         setTimeout(function() {wowStart()}, timeIterPreloader);
@@ -94,7 +96,7 @@ function toggleNavigation() {
 
 // ====== delete ScrollBar ======= //
 function deleteScrollBar() {
-    $('body, html').each(function () {
+    $('body').each(function () {
         this.style.setProperty('overflow', 'hidden', 'important');
     });
 }
@@ -103,7 +105,7 @@ function deleteScrollBar() {
 
 // ====== add ScrollBar ======= //
 function addScrollBar() {
-    $('body, html').each(function () {
+    $('body').each(function () {
         this.style.setProperty('overflow', 'visible', 'important');
     });
 }
@@ -111,7 +113,7 @@ function addScrollBar() {
 
 // fullPage.js (Full screen pages library) https://github.com/alvarotrigo/fullPage.js
 function fullpageStart() {
-    console.log('start');
+
     $('#fullpage').fullpage({
         //Navigation
         menu: '#menu',
@@ -184,10 +186,10 @@ function fullpageStart() {
 
             if(isResponsive) {
                 if($(".navigation__hamburger").hasClass("active")) {
-                   deleteScrollBar();
+                    deleteScrollBar();
                 }
                 else {
-                    addScrollBar();
+                   addScrollBar();
                 }
             }
         }
@@ -212,9 +214,6 @@ $(window).on("load", function () {
     handlePreloader(5500);
 });
 // ================================ //
-
-
-
 
 
 
